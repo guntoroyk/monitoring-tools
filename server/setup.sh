@@ -50,7 +50,7 @@ Group=prometheus
 Type=simple
 ExecStart=/usr/local/bin/prometheus \
     --config.file /etc/prometheus/prometheus.yaml \
-    --storage.tsdb.path /var/lib/prometheus/ \
+    --storage.tsdb.path /var/lib/prometheus/data \
     --web.console.templates=/etc/prometheus/consoles \
     --web.console.libraries=/etc/prometheus/console_libraries
 [Install]
@@ -65,8 +65,8 @@ systemctl start prometheus
 # Install Grafana
 echo "Installing Grafana..."
 apt-get install -y adduser libfontconfig1
-wget https://dl.grafana.com/oss/release/grafana_8.5.2_amd64.deb
-dpkg -i grafana_8.5.2_amd64.deb
+wget https://dl.grafana.com/oss/release/grafana_8.5.5_amd64.deb
+dpkg -i grafana_8.5.5_amd64.deb
 
 # Copy Grafana datasource
 cp $DIR/config/grafana/datasource.yaml /etc/grafana/provisioning/datasources/datasource.yaml
